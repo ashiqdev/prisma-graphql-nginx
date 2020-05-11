@@ -10,7 +10,7 @@ const Mutation = {
     const password = await bcrypt.hash(args.password, 10);
     const data = { ...args };
 
-    const newUser = await prisma.createUser({
+    const newUser = await prisma.createUser({ 
       ...data,
       password,
     });
@@ -21,7 +21,7 @@ const Mutation = {
   async signin(parent, args, ctx) {
     const { request } = ctx;
     const ip =
-      request.headers["x-forwarded-for"] || req.connection.remoteAddress;
+      request.headers["x-forwarded-for"] || request.connection.remoteAddress;
     const { email, password } = args;
     const user = await prisma.user({ email });
 

@@ -17,7 +17,7 @@ services:
       sh -c "npm run deploy && npm run start"
     env_file: ${ENV_FILE}
     ports:
-      - '4443:80'
+      - '4001:4001'
     depends_on:
       - prisma
     restart: always
