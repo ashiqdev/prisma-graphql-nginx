@@ -19,6 +19,9 @@ const Mutation = {
   },
 
   async signin(parent, args, ctx) {
+    const { request } = ctx;
+    const ip =
+      request.headers["x-forwarded-for"] || req.connection.remoteAddress;
     const { email, password } = args;
     const user = await prisma.user({ email });
 
@@ -31,6 +34,7 @@ const Mutation = {
     return {
       token: signToken(user),
       user,
+      ip,
     };
   },
 };
