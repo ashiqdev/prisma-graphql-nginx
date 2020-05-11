@@ -3,9 +3,13 @@ const fragment = require("./fragment");
 const { loginChecker } = require("../common");
 
 const Query = {
-  async users(parent, args, ctx) {
-    const users = await ctx.prisma.users().$fragment(fragment);
-    return users;
+  async userIp(parent, args, ctx) {
+    const { request } = ctx;
+    const ip =
+      request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+    return {
+      ip,
+    };
   },
 
   async user(parent, args, ctx) {

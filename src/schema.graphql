@@ -6,12 +6,16 @@ type AuthPayload {
   ip: String
 }
 
+type IpType {
+  ip: String
+}
+
 type Mutation {
   signup(name: String!, email: String!, password: String!): User!
   signin(email: String!, password: String!): AuthPayload!
 }
 
 type Query {
-  users: [User!]!
+  userIp: IpType!
   user(id: ID!): User!
 }
