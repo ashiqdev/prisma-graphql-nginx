@@ -29,7 +29,6 @@ services:
     volumes:
       - ./deploy/certs:/deploy/certs
       - ./deploy/nginx/conf.d:/etc/nginx/conf.d
-      - ./deploy/nginx/proxy.conf:/etc/nginx/proxy.conf
     ports:
       - 80:80/tcp
       - 443:443/tcp

@@ -6,7 +6,7 @@ const Query = {
   async userIp(parent, args, ctx) {
     const { request } = ctx;
     const ip =
-      request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+      request.headers["x-forwarded-for"];
     return {
       ip,
     };

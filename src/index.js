@@ -3,6 +3,8 @@ const createServer = require("./loaders/server");
 
 const server = createServer();
 
+server.express.set('trust proxy', true)
+
 server.start(
   {
     port: process.env.API_PORT,
