@@ -6,7 +6,7 @@ const Query = {
   async userIp(parent, args, ctx) {
     const { request } = ctx;
     const ip =
-      request.headers["x-forwarded-for"];
+      request.headers["x-forwarded-for"] || request.ip;
     return {
       ip,
     };
@@ -14,7 +14,7 @@ const Query = {
 
   async user(parent, args, ctx) {
     await loginChecker(ctx);
-    return ctx.prisma.user({ id: args.id }).$fragment(fragment);
+    return ctx.prisma.user({ id: args.id }).$fragment(fragment); 
   },
 };
 
